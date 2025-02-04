@@ -45,16 +45,19 @@ Refine the model iteratively to improve accuracy and reduce errors.
 <img height="300" src="https://github.com/user-attachments/assets/0d490ef4-6c75-43fe-a40b-bebed7acf990">
 <img height="200" src="https://github.com/user-attachments/assets/95cdb883-de40-45f0-ab45-05d23d7c6678">
 
-# Data Handling & Preparation
+# Machine Learning: Data Handling in Python
+
 ## Importing and Uploading Data
 
 ### Reading CSV Files
+To read a CSV file using **pandas**:
 ```python
 import pandas as pd
 df = pd.read_csv('hotel_bookings.csv')
 ```
 
 ### Reading CSV from a URL
+You can fetch a CSV file directly from a URL:
 ```python
 import requests
 from io import StringIO
@@ -65,14 +68,25 @@ data = StringIO(req.text)
 df = pd.read_csv(data)
 ```
 
-### Reading CSV with Different Parameters
-- **Separator (`sep`)**: Specifies a custom delimiter.
-- **Index Column (`index_col`)**: Sets a specific column as index.
-- **Header (`header`)**: Defines header row.
-- **Use Columns (`usecols`)**: Selects specific columns.
-- **Skip Rows (`skiprows`)**: Skips initial rows.
-- **Read Limited Rows (`nrows`)**: Loads only a subset of data.
-- **Encoding (`encoding`)**: Handles character encoding issues.
+### Using CSV Parameters
+- **filepath_or_buffer:** File path or URL of the CSV file.
+- **sep:** Custom delimiter.
+- **delimiter:** Alias for `sep`.
+- **header:** Row number to use as column names.
+- **names:** Custom column names.
+- **index_col:** Column(s) to set as index.
+- **usecols:** Select specific columns.
+- **dtype:** Data type of columns.
+- **skiprows:** Number of rows to skip at the beginning.
+- **nrows:** Number of rows to read.
+- **na_values:** Strings to consider as NaN.
+- **keep_default_na:** Whether to include default NaN values.
+- **converters:** Functions to transform column values.
+- **parse_dates:** Columns to parse as dates.
+- **infer_datetime_format:** Infer date format for performance.
+- **encoding:** Character encoding format.
+- **error_bad_lines:** Skip bad lines instead of raising errors.
+- **low_memory:** Optimize memory usage.
 
 ```python
 pd.read_csv('movie_titles_metadata.tsv', sep='\t', index_col=0)
@@ -82,8 +96,14 @@ pd.read_csv('zomato.csv', encoding='latin-1')
 
 ## Handling Missing Data
 ```python
-df.fillna(value, inplace=True)  # Fills missing values
-df.dropna(inplace=True)  # Drops missing values
+df.fillna(value, inplace=True)  # Fill missing values
+df.dropna(inplace=True)         # Drop missing values
+df.replace(to_replace='?', value=None, inplace=True)  # Replace missing indicators
+```
+
+## Handling Duplicates
+```python
+df.drop_duplicates(inplace=True)  # Remove duplicate rows
 ```
 
 ## Handling Large Datasets
@@ -98,6 +118,11 @@ for chunk in dfs:
 df_json = pd.read_json('train.json')
 ```
 
+## Working with Excel Data
+```python
+df_excel = pd.read_excel('data.xlsx', sheet_name='Sheet1')
+```
+
 ## Working with SQL Databases
 ```python
 import mysql.connector
@@ -108,4 +133,17 @@ df_sql = pd.read_sql_query("SELECT * FROM countrylanguage", conn)
 ## Handling Dates
 ```python
 df = pd.read_csv('IPL Matches 2008-2020.csv', parse_dates=['date'])
+df['year'] = df['date'].dt.year  # Extract year
 ```
+
+## Data Type Conversion
+```python
+df['column_name'] = df['column_name'].astype(int)  # Convert to integer
+df['column_name'] = pd.to_datetime(df['column_name'])  # Convert to datetime
+```
+
+## Summary
+- Load CSV, JSON, Excel, and SQL data efficiently.
+- Handle missing values, duplicates, and large datasets.
+- Manage different encodings, delimiters, and indexing.
+- Parse and convert dates and data types for analysis.
