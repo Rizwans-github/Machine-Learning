@@ -30,12 +30,13 @@ you understand the data distribution and identify any outliers.
 
 ## Bivariate EDA 
 It involves looking at two variables at a time. Bivariate EDA can help you
-understand the relationship between two variables and identify any patterns that might
-exist.
+understand the relationship between two variables and identify any patterns that might exist.
+
 <img height= '200' src='https://github.com/user-attachments/assets/b9b5b1a9-0f3e-495b-a84f-3c58c3f202ee'>
 
 ## Multivariate EDA
 It involves looking at three or more variables at a time. Multivariate
 EDA can help you understand the relationships between several variables and identify
 any complex patterns or outliers that might exist.
+
 <img height= '200' src='https://github.com/user-attachments/assets/5046d378-9d0e-42e3-a09a-defe9f5c7361'>
