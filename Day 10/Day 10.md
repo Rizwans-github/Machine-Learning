@@ -7,7 +7,10 @@ Real-world data often contains missing values due to data corruption or recordin
 1. **Removing Missing Values** (Complete Case Analysis - CCA)  
 2. **Imputing Missing Values**  
    - **Univariate:** Mean/Median (Numerical), Mode (Categorical)  
-   - **Multivariate:** KNN Imputer, Iterative Imputer  
+   - **Multivariate:** KNN Imputer, Iterative Imputer
+  
+![image](https://github.com/user-attachments/assets/db7531ac-0d59-4b09-b02d-eeb99c4633a5)
+
 
 ### Complete Case Analysis (CCA)  
 CCA removes any observation with missing values, analyzing only complete records.  
