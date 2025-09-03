@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 import pickle
 import os
-
+os.environ["STREAMLIT_RUNTIME_DIR"] = os.path.join(os.getcwd(), ".streamlit")
+os.makedirs(os.environ["STREAMLIT_RUNTIME_DIR"], exist_ok=True)
 path = os.path.join(os.path.dirname(__file__), "final_model.sav")
 model = pickle.load(open(path, "rb"))
 
